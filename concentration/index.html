@@ -13,17 +13,17 @@
 	<body>
 		<p id="nombre" style="color:Tomato;"></p>
 		<script type="text/javascript">
-			/*var tamañoA=6;
-			var tamañoB=8;
+			/*var tamanoA=6;
+			var tamanoB=8;
 			var dimensionesA=480;
 			var dimensionesB=650;
-			var totalFicha=tamañoA*tamañoB;*/
+			var totalFicha=tamanoA*tamanoB;*/
 			var nivel=1;
-			var tamañoA=4;
-			var tamañoB=6;
+			var tamanoA=4;
+			var tamanoB=6;
 			var dimensionesA=320;
 			var dimensionesB=480;
-			var totalFicha=tamañoA*tamañoB;
+			var totalFicha=tamanoA*tamanoB;
 			var puntos=0;
 			// first tile picked up by the player
 			var firstTile=null;
@@ -32,7 +32,7 @@
 			// can the player pick up a tile?
 			var canPick=true;
 			// create an new instance of a pixi stage with a grey background
-			var stage = new PIXI.Stage(0x888800);
+			var stage = new PIXI.Stage(0xF00C0C);
 			document.getElementById("nombre").innerHTML = "Score=  "+puntos+" Quedan: "+totalFicha+" Nivel: "+nivel;
 			// create a renderer instance width=640 height=480
 			//var renderer = PIXI.autoDetectRenderer(640,480);
@@ -61,16 +61,16 @@
 					}			
 				}
 				// shuffle the chosen tiles
-				for(i=0;i<(tamañoA*tamañoB)*2;i++){
-					var from = Math.floor(Math.random()*(tamañoA*tamañoB));
-					var to = Math.floor(Math.random()*(tamañoA*tamañoB));
+				for(i=0;i<(tamanoA*tamanoB)*2;i++){
+					var from = Math.floor(Math.random()*(tamanoA*tamanoB));
+					var to = Math.floor(Math.random()*(tamanoA*tamanoB));
 					var tmp = chosenTiles[from];
 					chosenTiles[from]=chosenTiles[to];
 					chosenTiles[to]=tmp;
 				}
 				// place down tiles
-				for(i=0;i<tamañoA;i++){
-					for(j=0;j<tamañoB;j++){
+				for(i=0;i<tamanoA;i++){
+					for(j=0;j<tamanoB;j++){
 						// new sprite
 						var tile = PIXI.Sprite.fromFrame(chosenTiles[i*6+j]);
 						// buttonmode+interactive = acts like a button
@@ -84,8 +84,8 @@
 						tile.position.x = 7+i*80;
 						tile.position.y = 7+  j*80;
 						// paint tile black
-						tile.tint = 0xFF5733;
-						//tile.tint = 0x000000;
+						//tile.tint = 0xFF5733;
+						tile.tint = 0x000000;
 						// set it a bit transparent (it will look grey)
 						tile.alpha=0.5;
 						// add the tile
@@ -142,31 +142,31 @@
  												 nivel=nivel+2;
  												switch (nivel) {
 												   case 1: 
-												  	tamañoA=5;
-													tamañoB=6;
+												  	tamanoA=5;
+													tamanoB=6;
 													dimensionesA=400;
 													dimensionesB=480;
-													totalFicha=tamañoA*tamañoB;
+													totalFicha=tamanoA*tamanoB;
 													loader.load();
 
 												   break;
 												   
 												   case 2: 
-												    tamañoA=6;
-													tamañoB=6;
+												    tamanoA=6;
+													tamanoB=6;
 													dimensionesA=480;
 													dimensionesB=480;
-													totalFicha=tamañoA*tamañoB;
+													totalFicha=tamanoA*tamanoB;
 													loader.load();
 
 												   break;
 												   									   
 												   case 3: 
-												   	tamañoA=6;
-													tamañoB=8;
+												   	tamanoA=6;
+													tamanoB=8;
 													dimensionesA=480;
 													dimensionesB=650;
-													totalFicha=tamañoA*tamañoB;
+													totalFicha=tamanoA*tamanoB;
 													loader.load();
 
 												   break;
